@@ -31,7 +31,7 @@ create table [dbo].[Players](
 	[ConditionImmunity] NvarChar(500),
 	[Senses] NvarChar(500)			,
 	[SpecialAbility] NvarChar(500),
-	[Actions] NVarChar(MAX)
+	[Actions] NVarChar(MAX),
 
-	CONSTRAINT [PK_dbo.Players] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Players] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
