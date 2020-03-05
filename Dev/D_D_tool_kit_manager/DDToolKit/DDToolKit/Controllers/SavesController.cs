@@ -6,19 +6,25 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DDToolKit.DAL;
 using DDToolKit.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DDToolKit.Controllers
 {
     public class SavesController : Controller
     {
-        private gameModel db = new gameModel();
+         private gameModel db = new gameModel();
 
-        // GET: Saves
-        public ActionResult Index()
+        //private Save db = new Save();
+
+       /* [HttpPost]*/
+        public ActionResult index()
         {
-            return View(db.Saves.ToList());
+            string id = User.Identity.GetUserId();
+            return View(db.Saves.ToList().Where(s => s.OwnerID.Contains(id)));
         }
+  
 
         // GET: Saves/Details/5
         public ActionResult Details(int? id)
@@ -123,5 +129,48 @@ namespace DDToolKit.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // Crerate a character. We need Get and Post method. 
+        //1 ) Get Method
+
+        public ActionResult CreateCharacter()
+        {
+            return View();
+        }
+        // 2) Post Method
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCharacter([Bind(Include = "ID,OwnerID,GameID,Name,Size,Type,Aligment,ArmorClass,HitPoints,Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma,Languages,Speed,Proficiencies,DamageResistance,ConditionImmunity,Senses,SpecialAbility,Actions")] Player player)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Players.Add(player);
+                db.SaveChanges();
+                return RedirectToAction("ViewCharacter");
+            }
+
+            return View(player);
+        }
+
+        public ActionResult ViewCharacter()
+        {
+
+            var charactersList = db.Players.ToList();
+            return View(charactersList);
+        }
+
+        /*public ActionResult PlayersDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Player player = db.Players.Find(id);
+            if (player == null)
+            {
+                return HttpNotFound();
+            }
+            return View(player);
+        }*/
     }
 }
