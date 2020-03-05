@@ -1,4 +1,4 @@
-﻿namespace DDToolKit.Models
+namespace DDToolKit.Models
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,7 @@
         [StringLength(128)]
         public string OwnerID { get; set; }
 
-        public virtual Save GameID { get; set; }
+        public int? GameID { get; set; }
 
         [Required]
         [StringLength(30)]

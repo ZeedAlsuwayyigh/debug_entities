@@ -11,7 +11,7 @@
 create table [dbo].[Players](
 	[ID]		INT IDENTITY(1,1)	NOT NULL,
 	[OwnerID]	Nvarchar(128)		,
-	[GameID]	Int					NOT NULL,
+	[GameID]	Int					,
 	[Name]		NvarChar(30)		Not NULL,
 	[Size]		NvarChar(15)		,
 	[Type]		NvarChar(20)		,
@@ -34,5 +34,5 @@ create table [dbo].[Players](
 	[Actions] NVarChar(MAX)
 
 	CONSTRAINT [PK_dbo.Players] PRIMARY KEY CLUSTERED ([ID] ASC),
-	CONSTRAINT [FK_dbo.Players_dbo.Saves_ID] FOREIGN KEY ([GameID]) REFERENCES [dbo].[Saves] ([ID])
+	
 );
