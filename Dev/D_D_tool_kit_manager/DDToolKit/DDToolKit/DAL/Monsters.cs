@@ -9,8 +9,8 @@ namespace DDToolKit.DAL
     public partial class Monsters : DbContext
     {
         public Monsters()
-           //  :base("name=Monsters")
-            : base("name=DDToolContext_Azure")
+             :base("name=Monsters")
+           // : base("name=DDToolContext_Azure")
         {
         }
 
