@@ -20,12 +20,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
+            @*
             <th>
                 @Html.DisplayNameFor(model => model.OwnerID)
             </th>
+                  *@
             <th>
                 @Html.DisplayNameFor(model => model.Monsters)
             </th>
+              
             <th></th>
         </tr>
     
@@ -34,16 +37,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+            @*
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerID)
             </td>
+                  *@
             <td>
                 @Html.DisplayFor(modelItem => item.Monsters)
             </td>
+              
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("To add characters", "AddCharacter", new { id = item.ID })
             </td>
         </tr>
     }

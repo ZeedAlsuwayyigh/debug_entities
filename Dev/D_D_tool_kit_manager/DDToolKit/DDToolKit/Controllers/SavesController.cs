@@ -7,17 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DDToolKit.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DDToolKit.Controllers
 {
     public class SavesController : Controller
     {
+        //create table [dbo].[Players]
+        
         private gameModel db = new gameModel();
 
         // GET: Saves
         public ActionResult Index()
         {
-            return View(db.Saves.ToList());
+            string id = User.Identity.GetUserId();
+            return View(db.Saves.ToList().Where(s => s.OwnerID.Contains(id)));
         }
 
         // GET: Saves/Details/5
@@ -48,11 +52,15 @@ namespace DDToolKit.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,OwnerID,Monsters")] Save save)
         {
+            save.OwnerID = User.Identity.GetUserId();
+            save.Monsters = "Filler";
+
             if (ModelState.IsValid)
             {
                 db.Saves.Add(save);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                
             }
 
             return View(save);
@@ -123,5 +131,56 @@ namespace DDToolKit.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // The methods below is for adding and showing the players characters.
+
+        // Get/Players/Create
+        public ActionResult AddCharacter()
+        {
+          
+            return View();
+        }
+
+        // POST: Players/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCharacter([Bind(Include = "ID,Name,Size,Type,Aligment,ArmorClass,HitPoints,Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma,Languages,Speed,Proficiencies,DamageResistance,ConditionImmunity,Senses,SpecialAbility,Actions")] Player player)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                db.Players.Add(player);
+                db.SaveChanges();
+                return RedirectToAction("showCharacter");
+            }
+
+            return View(player);
+        }
+
+        public ActionResult showCharacter() 
+        {
+           
+            var characters = db.Players.ToList();
+            return View(characters);
+        }
+
+        public ActionResult PlayersDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Player player = db.Players.Find(id);
+            if (player == null)
+            {
+                return HttpNotFound();
+            }
+            return View(player);
+        }
+
+
     }
 }
