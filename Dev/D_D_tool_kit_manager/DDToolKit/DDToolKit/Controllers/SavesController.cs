@@ -17,6 +17,7 @@ namespace DDToolKit.Controllers
         // GET: Saves
         public ActionResult Index()
         {
+
             return View(db.Saves.ToList());
         }
 
@@ -122,6 +123,55 @@ namespace DDToolKit.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // The methods below is for adding and showing the players characters.
+
+        // Get/Players/Create
+        public ActionResult AddCharacter()
+        {
+
+            return View();
+        }
+
+        // POST: Players/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCharacter([Bind(Include = "ID,Name,Size,Type,Aligment,ArmorClass,HitPoints,Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma,Languages,Speed,Proficiencies,DamageResistance,ConditionImmunity,Senses,SpecialAbility,Actions")] Player player)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                db.Players.Add(player);
+                db.SaveChanges();
+                return RedirectToAction("ViewCharacter");
+            }
+
+            return View(player);
+        }
+
+        public ActionResult ViewCharacter()
+        {
+
+            var characters = db.Players.ToList();
+            return View(characters);
+        }
+
+        public ActionResult PlayersDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Player player = db.Players.Find(id);
+            if (player == null)
+            {
+                return HttpNotFound();
+            }
+            return View(player);
         }
     }
 }
