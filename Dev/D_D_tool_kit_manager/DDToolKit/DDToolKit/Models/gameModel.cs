@@ -14,6 +14,7 @@ namespace DDToolKit.Models
         }
 
         public virtual DbSet<Player> Players { get; set; }
+        //public virtual DbSet<Save> Saves { get; set; }
         public virtual DbSet<Save> Saves { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
