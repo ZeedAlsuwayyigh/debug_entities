@@ -39,12 +39,13 @@ textarea {
     height: inherit;
 }
 
-#navbar-color {
-    background-color: rgba(0, 0, 0, 0);
+#navbar-color{
+    background-color: rgba(0,0,0,0);
     font-family: Algerian;
     font-size: 12px;
+    color:black;
 }
 
-#navbar-black{
-    background-color: black;
-}
+
+
+
