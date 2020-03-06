@@ -17,8 +17,10 @@ namespace DDToolKit.Controllers
         // GET: Saves
         public ActionResult Index()
         {
-            return View(db.Saves.ToList());
+            string id = User.Identity.GetUserId();
+            return View(db.Saves.ToList().Where(s => s.OwnerID.Contains(id)));
         }
+
 
         // GET: Saves/Details/5
         public ActionResult Details(int? id)
@@ -48,6 +50,9 @@ namespace DDToolKit.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,OwnerID,Monsters")] Save save)
         {
+
+            save.OwnerID = User.Identity.GetUserId();
+            save.Monsters = "Filler";
             if (ModelState.IsValid)
             {
                 db.Saves.Add(save);
@@ -122,6 +127,37 @@ namespace DDToolKit.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Game()
+        {
+            return View(db.Players.ToList());
+        }
+        public ActionResult CreatePlayer()
+        {
+            return View();
+        }
+        // POST: Saves/CreatePlayer
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePlayer([Bind(Include = "ID,OwnerID,GameID,Name,Size,Type,Aligment,ArmorClass,HitPoints,Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma,Languages,Speed,Proficiencies,DamageResistance,ConditionImmunity,Senses,SpecialAbility,Actions")] Player player)
+        {
+            int id = 1;
+            player.OwnerID = User.Identity.GetUserId();
+            player.GameID = id;
+            if (ModelState.IsValid)
+            {
+                db.Players.Add(player);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(player);
+        }
+        public ActionResult test()
+        {
+            return View();
         }
     }
 }

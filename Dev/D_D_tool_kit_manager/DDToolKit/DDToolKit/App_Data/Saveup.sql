@@ -5,7 +5,7 @@
 	[Monsters]  NvarChar(500),
 
 	CONSTRAINT [PK_dbo.Saves] PRIMARY KEY CLUSTERED ([ID] ASC),
-
+	
 );
 
 create table [dbo].[Players](
@@ -34,4 +34,5 @@ create table [dbo].[Players](
 	[Actions] NVarChar(MAX)
 
 	CONSTRAINT [PK_dbo.Players] PRIMARY KEY CLUSTERED ([ID] ASC),
+	
 );

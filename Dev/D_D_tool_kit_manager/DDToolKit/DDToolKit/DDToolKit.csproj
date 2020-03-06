@@ -182,6 +182,7 @@
     <Compile Include="Controllers\CreaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\SavesController.cs" />
     <Compile Include="Models\Creature.cs" />
     <Compile Include="DAL\Monsters.cs" />
@@ -237,7 +238,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Properties\PublishProfiles\ddtool - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Fixtest - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -379,6 +380,14 @@
     <Content Include="Views\Saves\Details.cshtml" />
     <Content Include="Views\Saves\Edit.cshtml" />
     <Content Include="Views\Saves\Index.cshtml" />
+    <Content Include="Views\Saves\Game.cshtml" />
+    <Content Include="Views\Saves\CreatePlayer.cshtml" />
+    <Content Include="Views\Saves\test.cshtml" />
+    <Content Include="Views\Players\Create.cshtml" />
+    <Content Include="Views\Players\Delete.cshtml" />
+    <Content Include="Views\Players\Details.cshtml" />
+    <Content Include="Views\Players\Edit.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
