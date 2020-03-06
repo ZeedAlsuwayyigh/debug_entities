@@ -374,16 +374,10 @@
     <Content Include="Views\Home\ExternalLinks.cshtml" />
     <Content Include="Views\Home\Tutorial.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Saves\Create.cshtml" />
-    <Content Include="Views\Saves\Delete.cshtml" />
-    <Content Include="Views\Saves\Details.cshtml" />
-    <Content Include="Views\Saves\Edit.cshtml" />
-    <Content Include="Views\Saves\Index.cshtml" />
-    <Content Include="Views\Saves\AddCharacter.cshtml" />
-    <Content Include="Views\Saves\ViewCharacter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Views\Saves\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
