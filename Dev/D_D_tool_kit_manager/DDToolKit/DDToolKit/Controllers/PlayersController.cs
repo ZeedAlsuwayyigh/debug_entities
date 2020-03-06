@@ -12,7 +12,7 @@ namespace DDToolKit.Controllers
 {
     public class PlayersController : Controller
     {
-        private GameModel db = new GameModel();
+        private gameModel db = new gameModel();
 
         // GET: Players
         public ActionResult Index()

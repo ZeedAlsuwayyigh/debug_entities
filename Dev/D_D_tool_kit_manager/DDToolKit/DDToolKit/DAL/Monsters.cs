@@ -11,7 +11,7 @@ namespace DDToolKit.DAL
         public Monsters()
            //  :base("name=Monsters")
             //: base("name=DDToolContext_Azure")
-            : base("name=Monsters_Azure")
+            : base("name=Monsters")
             /*: base("name=ClassprojectContext_Azure")*/
         {
         }
