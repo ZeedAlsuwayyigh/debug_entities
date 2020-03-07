@@ -38,3 +38,12 @@ textarea {
     width: inherit;
     height: inherit;
 }
+
+#navBar-color {
+    background-color:rgba(0,0,0,0);
+    font-family:Algerian; 
+    font-size:12px;
+}
+
+
+
