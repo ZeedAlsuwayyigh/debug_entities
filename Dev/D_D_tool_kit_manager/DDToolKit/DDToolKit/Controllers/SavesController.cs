@@ -138,29 +138,25 @@ namespace DDToolKit.Controllers
        
         public ActionResult addMonsters()
         {
-           
+               
                 ViewBag.names = new SelectList(dbMonsters.Creatures, "ID", "Name");
-                
-                /*ViewBag.Success = true;*/
-                return View();
-                
+
+            return View();
             
-           
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult addMonsters([Bind(Include = "ID,Name")] Creature creature)
+        /*[HttpPost]
+        public ActionResult addMonsters(*//*[Bind(Include = "ID,Name")] Creature creature*//*)
         {
-            if (ModelState.IsValid)
+            *//*if (ModelState.IsValid)
             {
                 dbMonsters.Creatures.Add(creature);
                 dbMonsters.SaveChanges();
                 return RedirectToAction("showMonsters");
             }
 
-            return View(creature);
-
-        }
+            return View(creature);*//*
+            
+        }*/
     }
 }
