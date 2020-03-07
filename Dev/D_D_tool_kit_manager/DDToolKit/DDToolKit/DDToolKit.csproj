@@ -379,6 +379,8 @@
     <Content Include="Views\Saves\Details.cshtml" />
     <Content Include="Views\Saves\Edit.cshtml" />
     <Content Include="Views\Saves\Index.cshtml" />
+    <Content Include="Views\Saves\addMonsters.cshtml" />
+    <Content Include="Views\Saves\showMonsters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

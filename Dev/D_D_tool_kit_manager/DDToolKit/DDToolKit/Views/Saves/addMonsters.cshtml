@@ -1,0 +1,17 @@
+﻿@model DDToolKit.Models.Creature
+
+@{
+    ViewBag.Title = "Adding Monsters";
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+       @Html.DropDownList("names", null, htmlAttributes: new { @class = "form-control"})
+    </div>
+}

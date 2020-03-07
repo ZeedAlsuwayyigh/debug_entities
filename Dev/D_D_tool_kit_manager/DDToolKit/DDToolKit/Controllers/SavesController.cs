@@ -7,12 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DDToolKit.Models;
+using DDToolKit.DAL;
 
 namespace DDToolKit.Controllers
 {
     public class SavesController : Controller
     {
         private gameModel db = new gameModel();
+        private Monsters dbMonsters = new Monsters();
+        
 
         // GET: Saves
         public ActionResult Index()
@@ -122,6 +125,42 @@ namespace DDToolKit.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult showMonsters()
+        {
+            //var Res = db.Creatures.Where(p => p.Name.Contains(SearchName)).ToList();
+            ViewBag.Names = dbMonsters.Creatures.Select(n => n.Name).ToList();
+            return View();
+           
+        }
+        //GET
+       
+        public ActionResult addMonsters()
+        {
+           
+                ViewBag.names = new SelectList(dbMonsters.Creatures, "ID", "Name");
+                
+                /*ViewBag.Success = true;*/
+                return View();
+                
+            
+           
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult addMonsters([Bind(Include = "ID,Name")] Creature creature)
+        {
+            if (ModelState.IsValid)
+            {
+                dbMonsters.Creatures.Add(creature);
+                dbMonsters.SaveChanges();
+                return RedirectToAction("showMonsters");
+            }
+
+            return View(creature);
+
         }
     }
 }
