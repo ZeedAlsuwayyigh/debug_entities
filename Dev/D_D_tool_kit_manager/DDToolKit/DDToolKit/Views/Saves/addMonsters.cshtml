@@ -6,9 +6,13 @@
 }
 
 
-<body>
+<div class="row">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-6"></div>
+</div>
 
-    <div>
+<div class="row">
+    <div class="col-lg-6">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -22,7 +26,12 @@
         }
     </div>
 
-</body>
+    <div class="col-lg-6">
+        <p>Here you can view list of monsters!!</p>
+    </div>
+</div>
+
+
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/MonsterStats.js"></script>
