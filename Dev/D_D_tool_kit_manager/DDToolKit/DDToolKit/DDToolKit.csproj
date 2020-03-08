@@ -216,13 +216,10 @@
     <Content Include="App_Data\script.sql" />
     <Content Include="App_Data\seed.sql" />
     <Content Include="App_Data\up.sql" />
-<<<<<<< HEAD
-=======
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\contactform.css" />
->>>>>>> b81e93d9ffd7b83c4a28b6023d9fb8740a3b586b
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
