@@ -9,10 +9,10 @@ namespace DDToolKit.Models
     {
         public gameModel()
 
-          // : base("name=Monsters")
+           : base("name=Monsters")
 
 
-           : base("name=DDToolContext_Azure")
+           //: base("name=DDToolContext_Azure")
 
 
         {
