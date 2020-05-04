@@ -16,12 +16,30 @@
 
 @using (Html.BeginForm("Spells", "Creatures", FormMethod.Post))
 {
-    <div class="form-group">
-        <div class="search">
-            @Html.TextBox("SpellName", null, new { @class = "form-control", type = "text", placeholder = "search for a spell name" })
-            <button class="btn btn-primary" type="submit">Search</button>
-        </div>
+
+<div class="row">
+    <h1 style="text-align:center; color:white">Welcome to the spell page!</h1>
+    <div class="col-lg-4">
+
     </div>
+    <div class="col-lg-4">
+
+        <div class="form-group">
+            <div class="search">
+                @Html.TextBox("SpellName", null, new { @class = "form-control", type = "text", placeholder = "search for a spell name" })
+                <button class="btn btn-primary" style="text-align:center" type="submit">Search</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+
+</div>
+    
+
+
 }
 <div class="container">
     @if (ViewBag.Success == true)
